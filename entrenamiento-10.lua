@@ -64,7 +64,7 @@ viajesY = {}
 datos = {}
 
 for i = 1,#viajes do
-	X = 3}
+	X = 3
 	Y = {}
 	T = viajes[i][#viajes[i]-1][1][1]
 	D = viajes[i][#viajes[i]-1][2]
