@@ -64,18 +64,19 @@ viajesY = {}
 datos = {}
 
 for i = 1,#viajes do
-	X = {}
+	X = 3}
 	Y = {}
-	T = viajes[i][#viajes[i]-1][1]
+	T = viajes[i][#viajes[i]-1][1][1]
 	D = viajes[i][#viajes[i]-1][2]
 	for j = 1, #viajes[i] - 12 do
 		dd = viajes[i][j][1]
 		 t = viajes[i][j][2]
 		 d = viajes[i][j][3]
-		 y = viajes[i][j+10][3] --la funcion objetivo intenta obtener el porcentaje de avance del bus en el minuto t+1
+		 -- viajes[i][j+10][3] --la funcion objetivo intenta obtener el porcentaje de avance del bus en el minuto t+1
+		 y = viajes[i][j+10][3] - d --la funcion objetivo es obtener el delta de avance en un lapso de 10 minutos
 		--normalizacion
 		table.insert(X, torch.DoubleTensor({T/86400, t/86400, dd/D, d/D})) --t0, t, dd, d
-		table.insert(Y, torch.DoubleTensor({100*y/D})) --d(t+1)
+		table.insert(Y, torch.DoubleTensor({100*y/D})) --dd(t+10) [0 - 100]
 	end
 	table.insert(datos, viajes[i][#viajes[i]])
 	table.insert(viajesX, X)
